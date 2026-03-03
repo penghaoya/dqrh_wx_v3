@@ -11,7 +11,14 @@ on:
       - ".dockerignore"
       - "Dockerfile"
       - "docker-entrypoint.sh"
-      - "GridPredict_OceanMeteo/**"
+      - "ICE/**"
+      - "MCS/**"
+      - "STORM/**"
+      - "UNSTABLE/**"
+      - "fjdb/**"
+      - "jcdy/**"
+      - "jctw/**"
+      - "lightning/**"
   workflow_dispatch:
 
 concurrency:
@@ -19,7 +26,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  IMAGE_NAME: post_wrfout
+  IMAGE_NAME: meteo-algorithm-runtime
 
 permissions:
   contents: read
