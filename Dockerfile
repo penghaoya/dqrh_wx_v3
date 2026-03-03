@@ -59,7 +59,7 @@ RUN python -m venv "${VIRTUAL_ENV}" && \
         pip install --prefer-binary torch==2.4.1; \
     fi
 
-RUN mkdir -p /mnt/data2/DPS/WorkDir/EXE /workspace /opt/python-3.10.13/bin && \
+RUN mkdir -p /mnt/data2/DPS/WorkDir/EXE /opt/python-3.10.13/bin && \
     printf '%s\n' '#!/usr/bin/env sh' 'exec /opt/venv/bin/python "$@"' > /opt/python-3.10.13/bin/python && \
     printf '%s\n' '#!/usr/bin/env sh' 'exec /opt/venv/bin/pip "$@"' > /opt/python-3.10.13/bin/pip && \
     chmod +x /opt/python-3.10.13/bin/python /opt/python-3.10.13/bin/pip
@@ -67,8 +67,6 @@ RUN mkdir -p /mnt/data2/DPS/WorkDir/EXE /workspace /opt/python-3.10.13/bin && \
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-WORKDIR /workspace
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["/bin/bash"]
